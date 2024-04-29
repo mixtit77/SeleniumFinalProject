@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -36,14 +37,13 @@ public class ChangePersonalDataPage extends BasePage {
 
         String currentValue = firstNameFieldElement.getAttribute("value");
         //String text = firstNameFieldElement.getText();
-        firstNameFieldElement.clear();
+        firstNameFieldElement.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        firstNameFieldElement.sendKeys(Keys.DELETE);
         if (currentValue.contains(nameOne)) {
             firstNameFieldElement.sendKeys(nameTwo);
         } else if (currentValue.contains(nameTwo)) {
-            firstNameFieldElement.clear();
             firstNameFieldElement.sendKeys(nameOne);
         } else {
-            firstNameFieldElement.clear();
             firstNameFieldElement.sendKeys("Papa");
         }
     }
