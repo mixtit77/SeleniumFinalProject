@@ -1,10 +1,5 @@
 
 ‚
-java:S1118":Add a private constructor to hide the implicit public one.(ˆ¹×§úÿÿÿÿ8ÑÑ—Éò1J$2c38c3ce-8e44-41b4-94e4-51b8180a4f7e
-ƒ	java:S125
-"<This block of commented-out lines of code should be removed.(åÉˆ¤ùÿÿÿÿ8¨êŒÇò1J$4b8c59a1-391a-488d-9056-9c4e2cfac0c6
+java:S1118":Add a private constructor to hide the implicit public one.(ˆ¹×§úÿÿÿÿ8êí¦÷ò1J$9a06a638-a443-4e08-af9e-cc33cfe79534
 n
-java:S1172"+Remove this unused method parameter "type".(ó›Æà8¯êŒÇò1J$bfb24bd7-c1e8-48e6-9b37-28d521181a03
-~	java:S125"<This block of commented-out lines of code should be removed.(£Ò±­8äëÇò1J$58a23f76-325f-49cc-9098-3aedeeb05d39
-Ž
-java:S1128"FRemove this unused import 'org.openqa.selenium.firefox.FirefoxDriver'.(Úª ÿÿÿÿÿ8†Ò—Éò1J$c5f70ebd-9634-424c-875a-57d75232b5b0
+java:S1172"+Remove this unused method parameter "type".(ó›Æà8óí¦÷ò1J$13421888-daa4-4b0b-b3ef-c5aa63f54456
