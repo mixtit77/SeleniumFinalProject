@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.ChangePersonalDataPage;
 import pages.LoginPage;
+import pages.SearchPage;
 
 public class Steps {
     private WebDriver driver;
@@ -17,11 +18,13 @@ public class Steps {
 
     private LoginPage loginPage;
     private ChangePersonalDataPage changePersonalDataPage;
+    private SearchPage searchPage;
 
     public Steps() {
         this.driver = DriverInitializer.initChrome();
         this.loginPage = new LoginPage(this.driver);
         this.changePersonalDataPage = new ChangePersonalDataPage(this.driver);
+        this.searchPage = new SearchPage(this.driver);
     }
 
     @Given("The user open Tesco website")
@@ -121,9 +124,32 @@ public class Steps {
     public void theUserSeesChangedFirstNameAtTheTopOfThePage() {
         changePersonalDataPage.checkNameAtTheTopOfThePage();
     }
+    @Given("the User sees the search field on the main page")
+    public void theUserSeesTheSearchFieldOnTheMainPage() {
+        searchPage.checkSearchField();
+    }
+    @When("the User enters {string} in the search field")
+    public void theUserEntersProductInTheSearchField(String product) {
+        searchPage.enterTextInTheSearchField(product);
+    }
+
+    @Then("the User sees the search results with {string}")
+    public void theUserSeesTheSearchResultsWithProduct(String product) {
+        searchPage.checkResultsWithProduct(product);
+    }
+
+    @And("the User clicks the search button")
+    public void theUserClicksTheSearchButton() {
+        searchPage.clickSearchButton();
+    }
     @After
     public void tearDown() {
         loginPage.closeDriver();
+    }
+
+    @And("the User sees the add buttons for each product")
+    public void theUserSeesTheAddButtonsForEachProduct() {
+        searchPage.checkExistingButtons();
     }
 }
 

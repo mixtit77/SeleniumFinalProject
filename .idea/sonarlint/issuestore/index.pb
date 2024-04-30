@@ -102,3 +102,5 @@ _
 /src/test/java/pages/ChangePersonalDataPage.java,7\8\787f95e748c30cef8b9bac0a58ae13c3f0a89e92
 e
 5src/test/resources/feature/changePersonalData.feature,3\a\3af4d81e4064d4c96fa2934f8853a1d4fd4cf229
+S
+#src/test/java/pages/SearchPage.java,9\d\9d262a728f2e510b5a82fdb800d57886a24a4b49
