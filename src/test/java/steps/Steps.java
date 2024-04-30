@@ -147,8 +147,8 @@ public class Steps {
         loginPage.closeDriver();
     }
 
-    @And("the User sees the add buttons for each product")
-    public void theUserSeesTheAddButtonsForEachProduct() {
+    @And("the User sees the add button for each product")
+    public void theUserSeesTheAddButtonForEachProduct() {
         searchPage.checkExistingButtons();
     }
 }

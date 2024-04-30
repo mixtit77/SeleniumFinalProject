@@ -1,6 +1,7 @@
 package pages;
 
 import driver.Settings;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -74,7 +75,7 @@ public class LoginPage extends BasePage {
     public void checkTextAtTheTopOfThePage(String greetings) {
         WebElement element = driver.findElement(greeting);
         String text = element.getText();
-        text.contains(greetings);
+        Assertions.assertTrue(text.contains(greetings));
     }
 
     public void checkErrorMessage(String warningMessage) {

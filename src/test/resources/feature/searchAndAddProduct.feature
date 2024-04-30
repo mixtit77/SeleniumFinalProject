@@ -11,7 +11,7 @@ Feature: Product search and adding products in the cart
       When the User enters "<product>" in the search field
       And the User clicks the search button
       Then the User sees the search results with "<product>"
-      And the User sees the add buttons for each product
+      And the User sees the add button for each product
 
 
       Examples:
