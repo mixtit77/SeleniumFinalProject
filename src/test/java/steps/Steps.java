@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.ChangePersonalDataPage;
 import pages.LoginPage;
 import pages.SearchPage;
+import pages.SortByPricePage;
 
 public class Steps {
     private WebDriver driver;
@@ -19,12 +20,14 @@ public class Steps {
     private LoginPage loginPage;
     private ChangePersonalDataPage changePersonalDataPage;
     private SearchPage searchPage;
+    private SortByPricePage sortByPricePage;
 
     public Steps() {
         this.driver = DriverInitializer.initChrome();
         this.loginPage = new LoginPage(this.driver);
         this.changePersonalDataPage = new ChangePersonalDataPage(this.driver);
         this.searchPage = new SearchPage(this.driver);
+        this.sortByPricePage = new SortByPricePage(this.driver);
     }
 
     @Given("The user open Tesco website")
@@ -150,6 +153,36 @@ public class Steps {
     @And("the User sees the add button for each product")
     public void theUserSeesTheAddButtonForEachProduct() {
         searchPage.checkExistingButtons();
+    }
+
+    @And("the User goes to the Promotions section on the main page")
+    public void theUserGoesToThePromotionsSectionOnTheMainPage(){
+        sortByPricePage.goToThePromotionSection();
+    }
+
+    @And("the User goes to any suggested section on the promotion page")
+    public void theUserGoesToAnySuggestedSectionOnThePromotionPage(){
+        sortByPricePage.goToAnySuggestedSection();
+    }
+
+    @When("the User clicks on dropdown list sort by high to low")
+    public void theUserClicksOnDropdownListSortByHighToLow(){
+        sortByPricePage.clickOnSortByHighToLow();
+    }
+
+    @Then("the User sees the results which sorted by price high to low")
+    public void theUserSeesTheResultsWhichSortedByPriceHighToLow() {
+        sortByPricePage.checkSortedByHighToLowResults();
+    }
+
+    @When("the User clicks on dropdown list sort by low to high")
+    public void theUserClicksOnDropdownListSortByLowToHigh() {
+        sortByPricePage.clickOnSortByLowToHigh();
+    }
+
+    @Then("the User sees the results which sorted by price low to high")
+    public void theUserSeesTheResultsWhichSortedByPriceLowToHigh() {
+        sortByPricePage.checkSortedByLowToHighResults();
     }
 }
 

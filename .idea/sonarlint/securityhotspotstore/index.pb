@@ -104,3 +104,9 @@ e
 5src/test/resources/feature/changePersonalData.feature,3\a\3af4d81e4064d4c96fa2934f8853a1d4fd4cf229
 S
 #src/test/java/pages/SearchPage.java,9\d\9d262a728f2e510b5a82fdb800d57886a24a4b49
+S
+#src/test/java/pages/SortByPage.java,9\8\98d383389b99d91d84c1a125fd7bdda3abb05696
+T
+$src/test/java/pages/SortByPrice.java,3\f\3fd2a0b3137dddc3697de008300b00cbc7255bac
+X
+(src/test/java/pages/SortByPricePage.java,2\2\2272227598639e71361feb329926e4193d7e15ed

@@ -1,10 +1,10 @@
-Feature: Product search and adding products in the cart
+Feature: Product search and checking that each result have an add button
 
   Background:
     Given The user open Tesco website
     And the user accept privacy policy
 
-  Rule: Product search and adding products to the cart is allowed
+  Rule: Product search is allowed, each result must have an add button
 
     Scenario Outline: Product search by name
       Given  the User sees the search field on the main page
@@ -18,3 +18,5 @@ Feature: Product search and adding products in the cart
         | product  |
         | eggplant |
         | cucumber |
+        | potato   |
+        | onion    |

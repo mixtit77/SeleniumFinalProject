@@ -1,6 +1,7 @@
 package pages;
 
 
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class SearchPage extends BasePage{
     private static final By searchField = By.id("search-input");
     private static final By searchButton = By.xpath("//*[@id=\"search-form\"]/button");
-    private static final By results = By.xpath("//*[@id=\"results\"]/h1");
+    private static final By results = By.xpath("//*[@class=\"heading query\"]");
     private List<WebElement> productList = driver.findElements(By.xpath("//*[@class='styled__StyledLIProductItem-sc-198470k-1 fmKLdy product-list--list-item']"));
     private static final By addButtons = By.xpath("//span[@class = \"base-components__BaseElement-sc-1mosoyj-0 styled__TextSpan-rsekm1-4 oznwo GDiMp beans-button__text\"]");
     public SearchPage(WebDriver driver) {
@@ -33,25 +34,22 @@ public class SearchPage extends BasePage{
         driver.findElement(searchButton).click();
     }
     public void checkResultsWithProduct(String product){
-        WebElement element = driver.findElement(searchField);
         wait.until(ExpectedConditions.visibilityOfElementLocated(results));
+        WebElement element = driver.findElement(results);
         String text = element.getText();
-        //Assertions.assertTrue(text.contains(product));
+        Assertions.assertTrue(text.contains(product));
     }
     public void checkExistingButtons() {
         boolean allProductsHaveButton = checkProductsForButtonsPresence(productList);
-
         if (!allProductsHaveButton) {
             fail("Not every product has button. ");
         }
     }
     private boolean checkProductsForButtonsPresence(List<WebElement> productArray) {
         boolean allProductsHaveButton = true;
-
         for (WebElement product : productArray) {
             WebElement addButtonElement = product.findElement(addButtons);
             boolean isAddButtonPresent  = addButtonElement.isDisplayed();
-
             if (!isAddButtonPresent) {
                 allProductsHaveButton = false;
                 break;
