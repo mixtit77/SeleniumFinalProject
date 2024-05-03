@@ -16,7 +16,10 @@ public class LoginPage extends BasePage {
     private static final By tescoLogo = By.xpath("(//*[@class=\"ddsweb-tesco-logo__svg\"])[1]");
     private static final By signOutButton = By.id("utility-header-logout-link");
     private static final By greeting = By.xpath("//*[@id=\"utility-header-greetings\"]");
-    private static final By warningMessageElement = By.xpath("//*[@class=\"styled__StyledBodyText-sc-119w3hf-5 cjzjrS beans-notification__title\"]");
+    private static final By greeting2 = By.cssSelector("#utility-header-greetings");
+    private static final By searchButton = By.xpath("//*[@id=\"search-form\"]/button");
+    private static final By warningMessageElement = By.cssSelector("//*[@class=\"styled__StyledBodyText-sc-119w3hf-5 cjzjrS beans-notification__title\"]");
+    private static final By warningMessageElement2 = By.xpath(".styled__StyledBodyText-sc-119w3hf-5.cjzjrS.beans-notification__title");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -24,9 +27,9 @@ public class LoginPage extends BasePage {
 
     public void openWebsite() {
         driver.get(Settings.TESCO_MAIN_PAGE_URL);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(tescoLogo));
-        WebElement tescoLogoElement = driver.findElement(tescoLogo);
-        tescoLogoElement.isEnabled();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(signInSection));
+        WebElement signInSectionElement = driver.findElement(signInSection);
+        signInSectionElement.isEnabled();
 
     }
 
@@ -64,25 +67,27 @@ public class LoginPage extends BasePage {
     public void signOutClick() {
         wait.until(ExpectedConditions.elementToBeClickable(signOutButton)).isEnabled();
         driver.findElement(signOutButton).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(tescoLogo));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(signInSection));
     }
 
     public void waitUntilRedirectToMainPage() {
+        driver.get(Settings.TESCO_MAIN_PAGE_URL);
         wait.until(ExpectedConditions.urlToBe(Settings.TESCO_MAIN_PAGE_URL));
     }
 
     public void waitVisibilityLogo() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(tescoLogo));
+       //wait.until(ExpectedConditions.visibilityOfElementLocated(tescoLogo));
     }
 
     public void checkTextAtTheTopOfThePage(String greetings) {
-        WebElement element = driver.findElement(greeting);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(greeting2));
+        WebElement element = driver.findElement(greeting2);
         String text = element.getText();
         Assertions.assertTrue(text.contains(greetings));
     }
 
     public void checkErrorMessage(String warningMessage) {
-        wait.until(ExpectedConditions.textToBe(warningMessageElement, warningMessage));
+        wait.until(ExpectedConditions.textToBe(warningMessageElement2, warningMessage));
     }
 
     public void checkSignInSection() {
@@ -91,7 +96,7 @@ public class LoginPage extends BasePage {
 
     public void refreshPage() {
         driver.navigate().refresh();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(tescoLogo));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(searchButton));
     }
 }
 

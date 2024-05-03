@@ -13,6 +13,7 @@ public class ChangePersonalDataPage extends BasePage {
     private static final By firstNameField = By.id("first-name");
     private static final By saveChangesButton = By.xpath("//*[@id=\"personal-details\"]//button");
     private static final By greeting = By.xpath("//*[@id=\"utility-header-greetings\"]");
+    private static final By greeting2 = By.cssSelector("#utility-header-greetings");
 
     public ChangePersonalDataPage(WebDriver driver) {super(driver);}
 
@@ -57,7 +58,7 @@ public class ChangePersonalDataPage extends BasePage {
         editButtonElement.isEnabled();
     }
     public void checkNameAtTheTopOfThePage() {
-        WebElement element = driver.findElement(greeting);
+        WebElement element = driver.findElement(greeting2);
         String text = element.getText();
         Assertions.assertEquals("Hello " + name,text);
     }
