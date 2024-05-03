@@ -19,7 +19,7 @@ public class LoginPage extends BasePage {
     private static final By greeting2 = By.cssSelector("#utility-header-greetings");
     private static final By searchButton = By.xpath("//*[@id=\"search-form\"]/button");
     private static final By warningMessageElement = By.cssSelector("//*[@class=\"styled__StyledBodyText-sc-119w3hf-5 cjzjrS beans-notification__title\"]");
-    private static final By warningMessageElement2 = By.xpath(".styled__StyledBodyText-sc-119w3hf-5.cjzjrS.beans-notification__title");
+    private static final By warningMessageElement2 = By.cssSelector(".styled__StyledBodyText-sc-119w3hf-5.cjzjrS.beans-notification__title");
 
     public LoginPage(WebDriver driver) {
         super(driver);
