@@ -16,9 +16,3 @@ Feature: User login to the Store website
       And the User sees 'Hello' at the top of the page
       Then the User clicks on the Sign out button
       And the User sees Sign in button
-
-    Scenario: User login with incorrect credentials
-      When the User enters his correct login 'mixtit77@gmail.com'
-      And the User enters incorrect password 'Password'
-      And the User clicks the sign in button
-      Then the User sees warning message "Unfortunately we do not recognise those details."

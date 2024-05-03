@@ -40,7 +40,7 @@ public class LoginPage extends BasePage {
 
     public void enterEmail(String email) {
         WebElement emailFieldElement = driver.findElement(emailField);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(emailField));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(emailField)).isEnabled();
         emailFieldElement.clear();
         emailFieldElement.sendKeys(email);
     }

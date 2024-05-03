@@ -26,7 +26,7 @@ public class ChangePersonalDataPage extends BasePage {
         WebElement editButtonElement = wait.until(ExpectedConditions.elementToBeClickable(editButton));
         editButtonElement.click();
     }
-    String name;
+    private String name;
     public String changeFirstName(String nameOne, String nameTwo) {
         WebElement firstNameFieldElement = wait.until(ExpectedConditions.visibilityOfElementLocated(firstNameField));
         String currentValue = firstNameFieldElement.getAttribute("value");
