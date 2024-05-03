@@ -13,7 +13,7 @@ public class LoginPage extends BasePage {
     private static final By emailField = By.id("email");
     private static final By passwordField = By.id("password");
     private static final By signInButton = By.id("signin-button");
-    private static final By tescoLogo = By.className("ddsweb-tesco-logo__svg");
+    private static final By tescoLogo = By.xpath("(//*[@class=\"ddsweb-tesco-logo__svg\"])[1]");
     private static final By signOutButton = By.id("utility-header-logout-link");
     private static final By greeting = By.xpath("//*[@id=\"utility-header-greetings\"]");
     private static final By warningMessageElement = By.xpath("//*[@class=\"styled__StyledBodyText-sc-119w3hf-5 cjzjrS beans-notification__title\"]");
@@ -25,6 +25,9 @@ public class LoginPage extends BasePage {
     public void openWebsite() {
         driver.get(Settings.TESCO_MAIN_PAGE_URL);
         wait.until(ExpectedConditions.visibilityOfElementLocated(tescoLogo));
+        WebElement tescoLogoElement = driver.findElement(tescoLogo);
+        tescoLogoElement.isEnabled();
+
     }
 
     public void acceptPrivacyPolicy() {
