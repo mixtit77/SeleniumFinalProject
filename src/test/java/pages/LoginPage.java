@@ -16,9 +16,9 @@ public class LoginPage extends BasePage {
     private static final By searchButton = By.xpath("//*[@id=\"search-form\"]/button");
     private static final By signOutButton = By.id("utility-header-logout-link");
 
-    private static final By tescoLogoOne = By.xpath("(//*[@class=\"ddsweb-tesco-logo__svg\"])[1]");
+    private static final By tescoLogoOne = By.xpath("(//*[@class=\"brand-logo-link  pull-left\"])");
     private static final By tescoLogoTwo = By.cssSelector(".ddsweb-tesco-logo__svg");
-    private static final By greetingOne = By.xpath("//*[@id=\"utility-header-greetings\"]");
+    private static final By greetingOne = By.xpath("//*[@class=\"name-greeter__StyledNameGreeter-sc-1oudxvm-0 anQdf\"]");
     private static final By greetingTwo = By.cssSelector("#utility-header-greetings");
     private static final By warningMessageElementOne = By.xpath("//*[@class=\"styled__StyledBodyText-sc-119w3hf-5 cjzjrS beans-notification__title\"]");
     private static final By warningMessageElementTwo = By.cssSelector(".styled__StyledBodyText-sc-119w3hf-5.cjzjrS.beans-notification__title");
