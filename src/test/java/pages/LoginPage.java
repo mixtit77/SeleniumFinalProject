@@ -14,14 +14,14 @@ public class LoginPage extends BasePage {
     private static final By passwordField = By.id("password");
     private static final By signInButton = By.id("signin-button");
     private static final By searchButton = By.xpath("//*[@id=\"search-form\"]/button");
-    private static final By signOutButton = By.id("utility-header-logout-link");
-
-    private static final By tescoLogoOne = By.xpath("(//*[@class=\"brand-logo-link  pull-left\"])");
+    private static final By signOutButtonOne = By.id("utility-header-logout-link");
+    private static final By signOutButtonTwo = By.xpath("/html/body/div[1]/div/div/div[2]/nav[2]/div/div/div/ul/li[4]/form/button");
+    private static final By tescoLogoOne = By.xpath("//*[@id=\"content\"]/div/div/div[2]/div/header/div/div[1]/div[2]/a");
     private static final By tescoLogoTwo = By.cssSelector(".ddsweb-tesco-logo__svg");
-    private static final By greetingOne = By.xpath("//*[@class=\"name-greeter__StyledNameGreeter-sc-1oudxvm-0 anQdf\"]");
-    private static final By greetingTwo = By.cssSelector("#utility-header-greetings");
-    private static final By warningMessageElementOne = By.xpath("//*[@class=\"styled__StyledBodyText-sc-119w3hf-5 cjzjrS beans-notification__title\"]");
-    private static final By warningMessageElementTwo = By.cssSelector(".styled__StyledBodyText-sc-119w3hf-5.cjzjrS.beans-notification__title");
+    private static final By greetingOne = By.id("utility-header-greetings");
+    private static final By greetingTwo = By.xpath("/html/body/div[1]/div/div/div[2]/nav[2]/div/div/div/ul/li[1]/div");
+    private static final By warningMessageElementOne = By.xpath("//*[contains(text(), 'Unfortunately we do not recognise those details.')]");
+    private static final By warningMessageElementTwo = By.xpath("/html/body/div[1]/div/div/div[2]/div/div/div/div[2]/div/div[2]/p[1]");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -67,9 +67,20 @@ public class LoginPage extends BasePage {
     }
 
     public void signOutClick() {
-        wait.until(ExpectedConditions.elementToBeClickable(signOutButton)).isEnabled();
-        driver.findElement(signOutButton).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(signInSection));
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(signOutButtonOne)).isEnabled();
+            driver.findElement(signOutButtonOne).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(signInSection));
+        } catch (Exception e) {
+            System.out.println("Sign out one not found. Trying sign out two.");
+        }
+        try{
+            wait.until(ExpectedConditions.elementToBeClickable(signOutButtonTwo)).isEnabled();
+            driver.findElement(signOutButtonTwo).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(signInSection));
+        } catch (Exception e) {
+            System.out.println("Sign out two not found.");
+        }
     }
 
     public void waitUntilRedirectToMainPage() {
@@ -81,7 +92,7 @@ public class LoginPage extends BasePage {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(tescoLogoOne));
         } catch (Exception e) {
-            System.out.println("Tesco logo one not found. Trying logo two.");;
+            System.out.println("Tesco logo one not found. Trying logo two.");
         }
         try{
             wait.until(ExpectedConditions.visibilityOfElementLocated(tescoLogoTwo));
@@ -97,7 +108,7 @@ public class LoginPage extends BasePage {
             String text = element.getText();
             Assertions.assertTrue(text.contains(greetings));
         } catch (Exception e) {
-            System.out.println("Greeting one not found. Trying Greeting two.");;
+            System.out.println("Greeting one not found. Trying Greeting two.");
         }
         try{
             wait.until(ExpectedConditions.visibilityOfElementLocated(greetingTwo));
