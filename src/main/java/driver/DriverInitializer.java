@@ -14,7 +14,7 @@ public static WebDriver initChrome() {
         options.addArguments("--disable-blink-features=AutomationControlled");
         options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
-        options.setBinary("/path/to/google-chrome");
+        options.setBinary("/usr/bin/google-chrome");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         options.addArguments("--disable-gpu");
