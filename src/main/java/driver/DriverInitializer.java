@@ -16,7 +16,6 @@ public static WebDriver initChrome() {
         options.addArguments("--start-maximized");
         options.setBinary("/usr/local/bin/chromedriver");
         options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
         options.addArguments("--disable-gpu");
         return new ChromeDriver(options);
     }
