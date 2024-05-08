@@ -32,14 +32,17 @@ jobs:
         java-version: '21'
         distribution: 'adopt'
         cache: maven
-    - uses: browser-actions/setup-chrome@v1
-      id: setup-chrome
+        
+    - name: Set up Google Chrome
+      uses: actions/setup-chrome@v1
+      with:
+        chrome-version: '124.0.6467.0' # Specify the version you want to use
     - run: |
-        echo "Chrome binary path: ${{ steps.setup-chrome.outputs.chrome-path }}"
+        echo "Google Chrome binary path: ${{ steps.setup-chrome.outputs.chrome-path }}"
         ${{ steps.setup-chrome.outputs.chrome-path }} --version
-    - name: Check if Chrome is installed
+    - name: Check if Google Chrome is installed
       run: |
-        google-chrome --version || echo "Chrome is not installed."
+        google-chrome --version || echo "Google Chrome is not installed."
     - name: Build with Maven
       run: mvn -B package --file pom.xml
    
