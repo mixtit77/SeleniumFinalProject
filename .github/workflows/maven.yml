@@ -34,6 +34,11 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Check if Chrome is installed
+      run: |
+        google-chrome --version || echo "Chrome is not installed."
+    - name: List installed browsers
+      run: google-chrome --version
     - name: Run tests
       run: mvn test
     - name: Show test results
