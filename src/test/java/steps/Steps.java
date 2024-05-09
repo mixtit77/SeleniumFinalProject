@@ -98,10 +98,6 @@ public class Steps {
     public void theUserUpdatesPage() {
         loginPage.refreshPage();
     }
-    @When("the User goes to the My account section")
-    public void theUserGoesToTheMyAccountSection() {
-        changePersonalDataPage.goToMyAccountSection();
-    }
 
     @And("The User clicks on the Edit button in the personal details section")
     public void theUserClicksOnTheEditButtonInThePersonalDetailsSection() {
@@ -183,6 +179,11 @@ public class Steps {
     @Then("the User sees the results which sorted by price low to high")
     public void theUserSeesTheResultsWhichSortedByPriceLowToHigh() {
         sortByPricePage.checkSortedByLowToHighResults();
+    }
+
+    @When("the User goes to the My account section")
+    public void theUserGoesToTheMyAccountSection() {
+        changePersonalDataPage.goToMyAccountSection();
     }
 }
 
