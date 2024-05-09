@@ -21,10 +21,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'
     - uses: actions/checkout@v4
     - name: Set up JDK 21
       uses: actions/setup-java@v3
@@ -37,10 +33,25 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y google-chrome-stable
+    - name: Download ChromeDriver
+      run: |
+        wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
+        unzip chromedriver_linux64.zip
+        sudo mv chromedriver /usr/bin/chromedriver
+        sudo chown root:root /usr/bin/chromedriver
+        sudo chmod +x /usr/bin/chromedriver
 
     - name: Verify Google Chrome Installation
       run: |
         google-chrome --version || echo "Google Chrome is not installed."
+    - name: Verify ChromeDriver Installation
+      run: |
+        chromedriver --version || echo "ChromeDriver is not installed."
+        
+    - name: Configure Chrome Options
+      run: |
+        echo "GOOGLE_CHROME_BIN=/usr/bin/google-chrome" >> $GITHUB_ENV
+        echo "GOOGLE_CHROME_ARGS="--headless --no-sandbox --disable-dev-shm-usage --disable-gpu"" >> $GITHUB_ENV
    
     - name: Run tests
       run: mvn test
