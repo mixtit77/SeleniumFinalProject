@@ -53,8 +53,8 @@ jobs:
         echo "GOOGLE_CHROME_BIN=/usr/bin/google-chrome" >> $GITHUB_ENV
         echo "GOOGLE_CHROME_ARGS="--headless --no-sandbox --disable-dev-shm-usage --disable-gpu"" >> $GITHUB_ENV
    
-    - name: Run tests
-      run: mvn test
+    - name: Run tests with Maven
+      run: mvn -B test --file pom.xml
     - name: Show test results
       run: cat target/surefire-reports/*.txt
 
